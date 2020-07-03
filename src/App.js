@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Header';
-import MasterForm from './Form/MasterForm.jsx';
-import Cart from './Summary/Cart.jsx';
-import './App.css';
+import Form from './Form';
+import CartSummary from './CartSummary';
 
 class App extends Component {
   state = {
@@ -35,25 +34,22 @@ class App extends Component {
     });
   };
 
-  USCurrencyFormat = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-    });
-
   render() {
     return (
       <div className="App">
         <Header />
-        <MasterForm 
+        <main className='form-box'>
+
+        <Form 
         features={this.props.features} 
-        format={this.USCurrencyFormat.format} 
         selected={this.state.selected} 
         updateFeature={this.updateFeature} 
         />
-        <Cart 
-        format={this.USCurrencyFormat.format} 
+
+        <CartSummary 
         selected={this.state.selected}
         />
+        </main>
        
       </div>
     );
